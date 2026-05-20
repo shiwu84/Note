@@ -43,3 +43,32 @@ Note/
 - **主题**: Minimal，配合 Minimal Settings 和 Style Settings 插件
 - **已启用核心插件**: 文件列表、搜索、关系图谱、反向链接、白板、出链、标签、属性、日记、模板、笔记重组、命令面板、斜杠命令、书签、大纲、字数统计、幻灯片、文件恢复、同步、数据库、Web 查看器
 - **已启用社区插件**: obsidian-hider、obsidian-style-settings、obsidian-minimal-settings、obsidian-custom-attachment-location
+
+## 版本控制
+
+本项目使用 [Jujutsu](https://github.com/jj-vcs/jj)（`jj`）进行版本控制，远程仓库为 `git@github.com:shiwu84/Note.git`。
+
+### 常用命令
+
+| 操作 | 命令 |
+|------|------|
+| 查看工作区状态 | `jj st` |
+| 查看提交历史 | `jj log` |
+| 提交修改 | `jj commit -m "描述"` |
+| 修改提交描述 | `jj describe -m "新描述"` |
+| 修改最近一次提交 | 修改文件后 `jj commit --tool meld`（或直接 `jj squash`） |
+| 推送到 GitHub | `jj git push` |
+| 从 GitHub 拉取 | `jj git fetch` |
+| 查看书签 | `jj bookmark list` |
+
+### 提交流程
+
+1. 修改文件后，`jj st` 确认变更内容
+2. `jj commit -m "描述"` 创建新提交
+3. `jj git push` 推送到远程仓库
+
+### 注意事项
+
+- **不要在提交信息中写 "Co-Authored-By: Claude"**：这是 git 自动生成的习惯，jj 提交不需要。
+- 提交信息使用中文，简洁描述做了什么更改。
+- 书签 `main` 跟踪主分支，`jj git push` 默认推送当前书签。
