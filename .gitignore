@@ -1,0 +1,18 @@
+# Obsidian workspace (个人工作区状态，频繁变动)
+.obsidian/workspace.json
+.obsidian/workspace-mobile.json
+
+# Obsidian plugin 二进制文件（可从社区商店重新下载）
+.obsidian/plugins/*/main.js
+.obsidian/plugins/*/manifest.json
+.obsidian/plugins/*/styles.css
+
+# Obsidian 回收站
+.trash/
+
+# 操作系统文件
+.DS_Store
+Thumbs.db
+
+# Jujutsu
+.jj/
