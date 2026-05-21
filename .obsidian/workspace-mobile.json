@@ -13,12 +13,12 @@
             "state": {
               "type": "markdown",
               "state": {
-                "file": "2026-05-19.md",
+                "file": "任务清单/2026-05-21.md",
                 "mode": "preview",
                 "source": false
               },
               "icon": "lucide-file",
-              "title": "2026-05-19"
+              "title": "2026-05-21"
             }
           }
         ]
@@ -170,6 +170,13 @@
   },
   "active": "77ef8b4b384eb5d8",
   "lastOpenFiles": [
+    "CLAUDE.md",
+    "任务清单/2026-05-21.md",
+    "任务清单/长期计划.md",
+    "Rust/cargo.md",
+    "任务清单/长期计划",
+    "Linux/yazi.md",
+    "Linux/在Arch Linux使用虚拟机.md",
     "2026-05-19.md"
   ]
 }
