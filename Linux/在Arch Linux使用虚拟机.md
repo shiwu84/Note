@@ -12,7 +12,10 @@ tags:
 
 # 在 Arch Linux 中使用虚拟机
 
-关于KVM，2010年后生产的x86架构CPU几乎都有这个功能，最常见的拦路虎其实是BIOS/UEFI中关闭了虚拟化，进入BIOS手动开启即可。
+> [!note] 组件关系
+> 本文综合使用 [[Linux/KVM|KVM]]（CPU/内存虚拟化）、[[Linux/QEMU|QEMU]]（设备模拟）、[[Linux/Libvirt|Libvirt]]（管理层）和 virt-manager（图形界面）搭建完整的虚拟化环境。各组件详解见对应笔记。
+
+关于 KVM，2010年后生产的x86架构CPU几乎都有这个功能，最常见的拦路虎其实是 **BIOS/UEFI 中关闭了虚拟化**，进入 BIOS 手动开启即可。
 
 KVM是Linux内核的一个模块，让内核本身变成一个Hypervisor，它利用CPU的硬件虚拟化扩展，让虚拟机可以直接在物理CPU上执行指令，而不是模拟执行，性能接近原生。
 
@@ -92,23 +95,27 @@ flowchart TD
     style PHY  fill:#e8e8e4,stroke:#888,color:#2c2c2a
 ```
 
-根据 [[Linux/KVM|KVM]] 、[[Linux/QEMU|QEMU]] 以及 [[Linux/Libvirt|Libvirt]] 可知，在Arch Linux上使用虚拟机需要以下操作：
+根据 [[Linux/KVM|KVM]]、[[Linux/QEMU|QEMU]] 以及 [[Linux/Libvirt|Libvirt]] 的知识，在 Arch Linux 上使用虚拟机需要以下操作：
 
-1. 安装必要软件包：
+### 安装必要软件包
 
 ```shell
 sudo pacman -S libvirt dnsmasq openbsd-netcat virt-manager virt-viewer qemu-full swtpm dmidecode
 ```
 
-其中swtpm是用来模拟tpm2.0的，因为安装windows需要tpm，dmidecode则是一个读取主板DMI/SMBIOS硬件信息的工具，可以获取CPU、内存、BIOS、主板型号等底层硬件信息。libvirt用它来收集宿主机硬件信息，以便更好地配置虚拟机。
+> [!info] 关键组件说明
+> - `swtpm` —— 模拟 **TPM 2.0**，安装 Windows 11 必需
+> - `dmidecode` —— 读取主板 DMI/SMBIOS 硬件信息，libvirt 用它收集宿主机信息以更好配置虚拟机
 
-2. 将自身添加进 libvirt用户组：
+### 添加用户组
+
+将自身添加进 `libvirt` 用户组：
 
 ```shell
 sudo usermod -aG libvirt shiwu
 ```
 
-3. 开启libvirtd守护进程：
+### 开启守护进程
 
 ```shell
 sudo systemctl enable --now libvirtd
@@ -116,11 +123,18 @@ sudo systemctl enable --now libvirtd
 
 ## 安装 Windows 11
 
-准备好[Windows 11安装镜像](https://www.microsoft.com/en-us/software-download/windows11)、[Virtio-win.iso](https://github.com/virtio-win/virtio-win-pkg-scripts)。
+### 准备工作
 
-下载好这两个镜像后，放入/var/lib/libvirt/images文件夹。
+> [!important]
+> 需要提前下载两个镜像文件：
+> - [Windows 11 安装镜像](https://www.microsoft.com/en-us/software-download/windows11)
+> - [Virtio-win.iso](https://github.com/virtio-win/virtio-win-pkg-scripts)（VirtIO 驱动）
 
-打开virt-manager，创建新的虚拟机，选择本地安装介质。
+下载好这两个镜像后，放入 `/var/lib/libvirt/images` 文件夹。
+
+### 创建虚拟机
+
+打开 virt-manager，创建新的虚拟机，选择**本地安装介质**。
 
 ![[Linux/assets/在Arch Linux使用虚拟机/file-20260520114950715.png]]
 
@@ -140,7 +154,12 @@ sudo systemctl enable --now libvirtd
 
 ![[Linux/assets/在Arch Linux使用虚拟机/file-20260520115012257.png]]
 
-修改SATA磁盘1的磁盘总线类型为Virtio。
+### 配置虚拟硬件
+
+> [!warning]
+> 以下硬件配置对 Windows 11 安装至关重要，请按顺序操作。
+
+修改 SATA 磁盘1的磁盘总线类型为 ==Virtio==。
 
 ![[Linux/assets/在Arch Linux使用虚拟机/file-20260520115018828.png]]
 
@@ -152,11 +171,13 @@ sudo systemctl enable --now libvirtd
 
 ![[Linux/assets/在Arch Linux使用虚拟机/file-20260520115029017.png]]
 
-最后修改TPM硬件如下图所示：
+最后修改 TPM 硬件（==CRB== 设备，==2.0== 版本）如下图所示：
 
 ![[Linux/assets/在Arch Linux使用虚拟机/file-20260520120512996.png]]
 
-最后开始安装。
+### 开始安装
+
+按照 Windows 11 安装向导逐步操作。
 
 选择语言设置、键盘设置。
 
@@ -180,7 +201,9 @@ sudo systemctl enable --now libvirtd
 
 ![[Linux/assets/在Arch Linux使用虚拟机/file-20260520115134159.png]]
 
-到了这一步，点击加载驱动程序。
+### 加载 VirtIO 驱动
+
+到了这一步（选择安装位置时看不到任何磁盘），点击**加载驱动程序**。
 
 ![[Linux/assets/在Arch Linux使用虚拟机/file-20260520115137665.png]]
 
@@ -210,13 +233,16 @@ sudo systemctl enable --now libvirtd
 
 ![[Linux/assets/在Arch Linux使用虚拟机/file-20260520115210790.png]]
 
-之后会进入正常的Windows 11安装程序，如果想要跳过登录微软账户，可以按Shift+F10或者Shift+Fn+F10调出命令提示窗口，输入：
+### 跳过微软账户登录
 
-```shell
-start ms-cxh:localonly
-```
+之后会进入正常的 Windows 11 OOBE 设置。如果想要**跳过登录微软账户**：
 
-该命令调用系统隐藏的本地账户创建界面，可以直接创建本地账户。
+> [!tip] 创建本地账户
+> 按 ==Shift+F10==（或 Shift+Fn+F10）调出命令提示窗口，输入：
+> ```shell
+> start ms-cxh:localonly
+> ```
+> 该命令调用系统隐藏的本地账户创建界面，可以直接创建**本地账户**，绕过微软账户强制登录。
 
 ![[Linux/assets/在Arch Linux使用虚拟机/file-20260520122048468.png]]
 
@@ -230,7 +256,14 @@ start ms-cxh:localonly
 
 ![[Linux/assets/在Arch Linux使用虚拟机/file-20260520122525243.png]]
 
-进入电脑桌面后，在Windows 11中浏览器搜索这个[网站](https://www.spice-space.org/download.html)下载并安装spiece-guest-tools.exe。
+### 安装 Guest Tools 与共享文件夹
+
+进入电脑桌面后，在 Windows 11 中按以下顺序安装驱动和工具：
+
+> [!important]
+> 必须先安装 virtio-win-guest-tools，再安装 winfsp，顺序不可颠倒。
+
+在 Windows 11 中浏览器搜索这个[网站](https://www.spice-space.org/download.html)下载并安装 `spice-guest-tools.exe`。
 
 ![[Linux/assets/在Arch Linux使用虚拟机/file-20260520095636557.png]]
 
@@ -272,3 +305,9 @@ start ms-cxh:localonly
 
 安装过程可参考以下视频：
 [Windows 11 on KVM/QEMU](https://youtu.be/woji50z1hF0?si=WzAPiNuh9FnSQoSB)
+
+## 相关笔记
+
+- [[Linux/KVM|KVM]] — CPU 和内存虚拟化的内核模块
+- [[Linux/QEMU|QEMU]] — 硬件设备模拟器，含 TPM 配置说明
+- [[Linux/Libvirt|Libvirt]] — 虚拟化管理中间层，含 virt-manager 配置

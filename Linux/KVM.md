@@ -9,6 +9,9 @@ tags:
 
 # KVM
 
+> [!note] 相关笔记
+> KVM 是 Linux 虚拟化栈的核心组件，与 [[Linux/QEMU|QEMU]]（设备模拟）、[[Linux/Libvirt|Libvirt]]（管理层）紧密配合。实操指南见 [[Linux/在Arch Linux使用虚拟机|在 Arch Linux 使用虚拟机]]。
+
 ## 检查 KVM 支持情况
 
 检查处理器是否支持硬件虚拟化：
@@ -23,10 +26,10 @@ LC_ALL=C.UTF-8 lscpu | grep Virtualization
 grep -E --color=auto 'vmx|svm|0xc0f' /proc/cpuinfo
 ```
 
-如果运行任一命令后没有任何输出，则说明您的处理器不支持硬件虚拟化，您将无法使用 KVM。
+如果运行任一命令后没有任何输出，则说明您的处理器不支持硬件虚拟化，您将**无法使用 KVM**。
 
 > [!notice]
-> 你可能需要在 BIOS 中启用虚拟化支持。AMD 和 Intel 在过去 10 年中制造的所有 x86_64 处理器都支持虚拟化。如果你的处理器看起来不支持虚拟化，几乎可以肯定是 BIOS 中未启用该功能。
+> 你可能需要在 BIOS 中启用虚拟化支持。AMD 和 Intel 在过去 10 年中制造的所有 x86_64 处理器都支持虚拟化。如果你的处理器看起来不支持虚拟化，几乎可以肯定是 **BIOS 中未启用该功能**。
 
 ## 内核支持
 
@@ -82,13 +85,13 @@ lsmod | grep virtio
 
 ```shell
 modprobe -r kvm_intel
-modprobe kvm_intel nested=1
+modprobe kvm_intel ==nested=1==
 ```
 
 若要永久生效，编辑 `/etc/modprobe.d/kvm_intel.conf`：
 
 ```ini
-options kvm_intel nested=1
+options kvm_intel ==nested=1==
 ```
 
 验证该项功能是否已激活：
@@ -98,12 +101,12 @@ cat /sys/module/kvm_intel/parameters/nested
 ```
 
 > [!note]
-> 若输出 `Y` 则表示嵌套虚拟化已激活。
+> 若输出 ==Y== 则表示嵌套虚拟化已激活。
 
-启用“主机透传”模式，将所有CPU功能转发给客户机系统：
+启用”主机透传”模式，将所有CPU功能转发给客户机系统：
 
-1. 如果使用 QEMU，请通过以下命令运行客户虚拟机：`qemu-system-x86_64 -enable-kvm -cpu host`。
-2. 如果使用 virt-manager，请将 CPU 型号更改为 `host-passthrough`。
+1. 如果使用 [[Linux/QEMU|QEMU]]，请通过以下命令运行客户虚拟机：`qemu-system-x86_64 -enable-kvm -cpu host`。
+2. 如果使用 virt-manager，请将 CPU 型号更改为 ==host-passthrough==。
 3. 如果使用 virsh，请使用 `virsh edit vm-name`，并将 CPU 配置行更改为 `<cpu mode='host-passthrough' check='partial'/>`。
 
 启动虚拟机并检查是否存在 vmx 标志：
@@ -111,3 +114,9 @@ cat /sys/module/kvm_intel/parameters/nested
 ```shell
 grep -E --color=auto 'vmx|svm' /proc/cpuinfo
 ```
+
+## 相关笔记
+
+- [[Linux/QEMU|QEMU]] — 硬件设备模拟器，与 KVM 配合提供完整虚拟化方案
+- [[Linux/Libvirt|Libvirt]] — 虚拟化管理中间层，统一管理 KVM/QEMU 等虚拟化后端
+- [[Linux/在Arch Linux使用虚拟机|在 Arch Linux 使用虚拟机]] — 从零搭建 KVM/QEMU/Libvirt 虚拟化环境的实操指南

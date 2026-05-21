@@ -10,6 +10,9 @@ tags:
 
 # Yazi
 
+> [!note] 相关
+> Yazi 的 Markdown 预览功能依赖 [[Rust/cargo|Cargo]] 安装的 `mdv` 工具。
+
 在 Arch Linux 中安装 yazi：
 
 ```shell
@@ -22,7 +25,7 @@ sudo pacman -S yazi ffmpeg 7zip jq poppler fd ripgrep fzf zoxide resvg imagemagi
 yazi
 ```
 
-按 q 退出，按 F1 或 ~ 打开帮助菜单。
+按 ==q== 退出，按 ==~== 打开帮助菜单。
 
 配置Markdown渲染，需要使用[[Rust/cargo]]安装[mdv](https://github.com/WhoSowSee/mdv) ，确保mdv在$PATH中：
 
@@ -59,7 +62,10 @@ function y() {
 
 要使用它，请将该函数复制到您所使用 Shell 的配置文件中。
 
-之后使用 `y` 代替 `yazi` 来启动程序，按下 q 键退出，你会看到当前工作目录已经改变。如果你不希望改变目录，按下 Q 键退出即可。
+之后使用 `y` 代替 `yazi` 来启动程序，按下 ==q== 键退出，你会看到当前工作目录已经改变。如果你不希望改变目录，按下 ==Q== 键退出即可。
+
+> [!tip] q vs Q
+> `q` 退出并**切换到 Yazi 最后所在的目录**，`Q` 退出并**保持当前 Shell 目录不变**。
 
 ## 快捷键绑定
 
@@ -204,4 +210,8 @@ function y() {
 
 ## 主题风格
 
-从我们的 [风格仓库](https://github.com/yazi-rs/flavors) 中挑选一个你喜欢的配色方案，或者 [烹制一款风格](https://yazi-rs.github.io/docs/flavors/overview#cooking) ！
+从我们的 [风格仓库](https://github.com/yazi-rs/flavors) 中挑选一个你喜欢的配色方案，或者 [烹制一款风格](https://yazi-rs.github.io/docs/flavors/overview#cooking)！
+
+## 相关笔记
+
+- [[Rust/cargo|Cargo]] — Rust 包管理器，yazi 的 Markdown 预览工具 `mdv` 通过 `cargo install` 安装
