@@ -97,6 +97,8 @@ flowchart TD
 
 根据 [[Linux/KVM|KVM]]、[[Linux/QEMU|QEMU]] 以及 [[Linux/Libvirt|Libvirt]] 的知识，在 Arch Linux 上使用虚拟机需要以下操作：
 
+## 环境配置
+
 ### 安装必要软件包
 
 ```shell
@@ -311,3 +313,4 @@ sudo systemctl enable --now libvirtd
 - [[Linux/KVM|KVM]] — CPU 和内存虚拟化的内核模块
 - [[Linux/QEMU|QEMU]] — 硬件设备模拟器，含 TPM 配置说明
 - [[Linux/Libvirt|Libvirt]] — 虚拟化管理中间层，含 virt-manager 配置
+- [[../工具|工具]] — 系统工具集，含 Ventoy（启动盘制作）、GParted（分区管理）
