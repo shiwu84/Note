@@ -154,7 +154,7 @@ This file provides guidance to Claude Code (claude.ai/code) when working with co
 
 ```
 Note/
-├── Linux/              # Linux 相关笔记（KVM、QEMU、Libvirt、yazi 等）
+├── Linux/              # Linux 相关笔记（KVM、QEMU、Libvirt、Yazi、Rsync 等）
 │   └── assets/         # Linux 笔记的附件（按笔记名分子目录）
 ├── Rust/               # Rust 笔记（cargo 等）
 ├── 计算机网络/          # 计算机网络笔记
@@ -176,27 +176,42 @@ Note/
 
 本项目使用 [Jujutsu](https://github.com/jj-vcs/jj)（`jj`）进行版本控制，远程仓库为 `git@github.com:shiwu84/Note.git`。
 
+### 笔记优化工作流
+
+每次优化笔记时，必须遵循以下流程：
+
+```
+拉取最新 → 优化笔记 → 提交 → 推送
+```
+
+具体步骤：
+
+1. **拉取最新**：`jj git fetch`，确保本地与远程同步。
+2. **检查冲突**：若远程有新提交，`jj rebase -s <本地提交> -d <远程提交>` 将本地工作变基到远程之上。
+3. **优化笔记**：按本文件规范编辑笔记内容。
+4. **确认变更**：`jj st` 查看所有变更，排除不应提交的文件（如 `.obsidian/workspace.json`）。
+5. **提交**：`jj commit -m "描述"`，提交信息使用中文，简洁描述做了什么更改。
+6. **推送**：`jj bookmark move main --to <提交ID>`（如书签未前进），然后 `jj git push`。
+
+> [!important] 先拉取再工作
+> 在开始任何笔记修改之前，必须 `jj git fetch`。这避免与远程（如 Mobile Sync）产生冲突。
+
 ### 常用命令
 
 | 操作 | 命令 |
 |------|------|
-| 查看工作区状态 | `jj st` |
-| 查看提交历史 | `jj log` |
+| 拉取远程 | `jj git fetch` |
+| 查看状态 | `jj st` |
+| 查看历史 | `jj log --limit 5` |
 | 提交修改 | `jj commit -m "描述"` |
-| 修改提交描述 | `jj describe -m "新描述"` |
-| 修改最近一次提交 | 修改文件后 `jj commit --tool meld`（或直接 `jj squash`） |
-| 推送到 GitHub | `jj git push` |
-| 从 GitHub 拉取 | `jj git fetch` |
-| 查看书签 | `jj bookmark list` |
-
-### 提交流程
-
-1. 修改文件后，`jj st` 确认变更内容
-2. `jj commit -m "描述"` 创建新提交
-3. `jj git push` 推送到远程仓库
+| 变基到远程 | `jj rebase -s <提交> -d <远程提交>` |
+| 移动书签 | `jj bookmark move main --to <提交ID>` |
+| 推送到远程 | `jj git push` |
+| 撤销文件修改 | `jj restore <文件路径>` |
 
 ### 注意事项
 
-- **不要在提交信息中写 "Co-Authored-By: Claude"**：这是 git 自动生成的习惯，jj 提交不需要。
+- **不要写 "Co-Authored-By: Claude"**：这是 git 习惯，jj 提交不需要。
 - 提交信息使用中文，简洁描述做了什么更改。
 - 书签 `main` 跟踪主分支，`jj git push` 默认推送当前书签。
+- `.obsidian/workspace.json` 已在 `.gitignore` 中，不应提交。
