@@ -313,4 +313,6 @@ sudo systemctl enable --now libvirtd
 - [[Linux/KVM|KVM]] — CPU 和内存虚拟化的内核模块
 - [[Linux/QEMU|QEMU]] — 硬件设备模拟器，含 TPM 配置说明
 - [[Linux/Libvirt|Libvirt]] — 虚拟化管理中间层，含 virt-manager 配置
-- [[../工具|工具]] — 系统工具集，含 Ventoy（启动盘制作）、GParted（分区管理）
+- [[工具|工具]] — 系统工具集，含 Ventoy（启动盘制作）、GParted（分区管理）
+- [[任务清单/2026-05-19|2026-05-19 任务清单]] — 配置 KVM/QEMU 任务
+- [[任务清单/2026-05-20|2026-05-20 任务清单]] — 配置 Win11 虚拟机及共享文件夹任务

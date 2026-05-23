@@ -215,4 +215,4 @@ function y() {
 ## 相关笔记
 
 - [[Rust/cargo|Cargo]] — Rust 包管理器，yazi 的 Markdown 预览工具 `mdv` 通过 `cargo install` 安装
-- [[../工具|工具]] — 系统工具汇总
+- [[工具|工具]] — 系统工具汇总

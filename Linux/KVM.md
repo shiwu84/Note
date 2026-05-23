@@ -120,3 +120,4 @@ grep -E --color=auto 'vmx|svm' /proc/cpuinfo
 - [[Linux/QEMU|QEMU]] — 硬件设备模拟器，与 KVM 配合提供完整虚拟化方案
 - [[Linux/Libvirt|Libvirt]] — 虚拟化管理中间层，统一管理 KVM/QEMU 等虚拟化后端
 - [[Linux/在Arch Linux使用虚拟机|在 Arch Linux 使用虚拟机]] — 从零搭建 KVM/QEMU/Libvirt 虚拟化环境的实操指南
+- [[任务清单/2026-05-19|2026-05-19 任务清单]] — 配置 KVM/QEMU 任务

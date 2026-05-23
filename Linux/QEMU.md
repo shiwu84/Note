@@ -50,3 +50,4 @@ sudo pacman -S swtpm
 - [[Linux/KVM|KVM]] — 内核虚拟化模块，为 QEMU 提供硬件加速
 - [[Linux/Libvirt|Libvirt]] — 虚拟化管理层，统一管理 QEMU/KVM
 - [[Linux/在Arch Linux使用虚拟机|在 Arch Linux 使用虚拟机]] — 从零搭建虚拟化环境的实操指南，包含 TPM 配置和 Windows 11 安装流程
+- [[任务清单/2026-05-19|2026-05-19 任务清单]] — 配置 KVM/QEMU 任务

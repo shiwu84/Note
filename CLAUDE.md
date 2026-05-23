@@ -42,14 +42,20 @@ This file provides guidance to Claude Code (claude.ai/code) when working with co
 > KVM.md    <──> QEMU.md          (KVM 与 QEMU 配合使用)
 > KVM.md    <──> Libvirt.md        (Libvirt 管理 KVM)
 > KVM.md    <──> 在Arch Linux使用虚拟机.md  (实操指南)
+> KVM.md    <──> 任务清单/2026-05-19.md  (配置 KVM/QEMU)
 > QEMU.md   <──> Libvirt.md        (Libvirt 管理 QEMU)
 > QEMU.md   <──> 在Arch Linux使用虚拟机.md  (实操指南)
+> QEMU.md   <──> 任务清单/2026-05-19.md  (配置 KVM/QEMU)
 > Libvirt.md <──> 在Arch Linux使用虚拟机.md  (实操指南)
 > cargo.md  <──> Yazi.md           (yazi 通过 cargo 安装)
 > cargo.md  <──> 任务清单/长期计划.md  (Rust 是长期目标)
 > cargo.md  <──> 任务清单/2026-05-21.md  (了解 Rust 发展历史)
 > 在Arch Linux使用虚拟机.md <──> 任务清单/2026-05-19.md  (配置 KVM/QEMU)
 > 在Arch Linux使用虚拟机.md <──> 任务清单/2026-05-20.md  (配置 Win11 VM)
+> 在Arch Linux使用虚拟机.md <──> 工具.md  (Ventoy/GParted 系统工具)
+> Yazi.md   <──> 工具.md           (系统工具汇总)
+> Rsync.md  <──> 工具.md           (系统工具汇总)
+> 工具.md   <──> 任务清单/2026-05-22.md  (配置双系统任务)
 > ```
 
 ### 文本格式规范（Markdown + Obsidian）
