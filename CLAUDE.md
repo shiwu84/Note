@@ -45,7 +45,7 @@ This file provides guidance to Claude Code (claude.ai/code) when working with co
 > QEMU.md   <──> Libvirt.md        (Libvirt 管理 QEMU)
 > QEMU.md   <──> 在Arch Linux使用虚拟机.md  (实操指南)
 > Libvirt.md <──> 在Arch Linux使用虚拟机.md  (实操指南)
-> cargo.md  <──> yazi.md           (yazi 通过 cargo 安装)
+> cargo.md  <──> Yazi.md           (yazi 通过 cargo 安装)
 > cargo.md  <──> 任务清单/长期计划.md  (Rust 是长期目标)
 > cargo.md  <──> 任务清单/2026-05-21.md  (了解 Rust 发展历史)
 > 在Arch Linux使用虚拟机.md <──> 任务清单/2026-05-19.md  (配置 KVM/QEMU)
