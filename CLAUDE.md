@@ -56,6 +56,12 @@ This file provides guidance to Claude Code (claude.ai/code) when working with co
 > Yazi.md   <──> 工具.md           (系统工具汇总)
 > Rsync.md  <──> 工具.md           (系统工具汇总)
 > 工具.md   <──> 任务清单/2026-05-22.md  (配置双系统任务)
+> 01_Hello World!.md <──> 02_现代模式，"use strict".md  (JS 学习路线)
+> 02_现代模式，"use strict".md <──> 03_变量.md  (JS 学习路线)
+> 01_Hello World!.md <──> 03_变量.md  (JS 学习路线)
+> 01_Hello World!.md <──> 任务清单/2026-05-24.md  (学习 JS)
+> 02_现代模式，"use strict".md <──> 任务清单/2026-05-24.md  (学习 JS)
+> 03_变量.md <──> 任务清单/2026-05-24.md  (学习 JS)
 > ```
 
 ### 文本格式规范（Markdown + Obsidian）
@@ -189,7 +195,7 @@ Note/
 每次优化笔记时，必须遵循以下流程：
 
 ```
-拉取最新 → 优化笔记 → 提交 → 推送
+拉取最新 → 优化笔记 → 提交 → 移动书签 → 推送
 ```
 
 具体步骤：
@@ -199,7 +205,8 @@ Note/
 3. **优化笔记**：严格遵循以下优化规则（详见下方"优化规则"）。
 4. **确认变更**：`jj st` 查看所有变更，排除不应提交的文件（如 `.obsidian/workspace.json`）。
 5. **提交**：`jj commit -m "描述"`，提交信息使用中文，简洁描述做了什么更改。
-6. **推送**：`jj bookmark move main --to <提交ID>`（如书签未前进），然后 `jj git push`。
+6. **移动书签**：`jj bookmark move main --to <提交ID>`，每次提交后必须将 `main` 书签移动到新提交。
+7. **推送**：`jj git push`。
 
 > [!important] 先拉取再工作
 > 在开始任何笔记修改之前，必须 `jj git fetch`。这避免与远程（如 Mobile Sync）产生冲突。
@@ -264,4 +271,5 @@ Note/
 - **不要写 "Co-Authored-By: Claude"**：这是 git 习惯，jj 提交不需要。
 - 提交信息使用中文，简洁描述做了什么更改。
 - 书签 `main` 跟踪主分支，`jj git push` 默认推送当前书签。
+- **`jj commit` 之后必须移动书签**：提交后 `main` 书签不会自动前进，不移动书签则 `jj git push` 不会推送任何内容。
 - `.obsidian/workspace.json` 已在 `.gitignore` 中，不应提交。
