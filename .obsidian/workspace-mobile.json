@@ -13,12 +13,12 @@
             "state": {
               "type": "markdown",
               "state": {
-                "file": "Linux/在Arch Linux使用虚拟机.md",
-                "mode": "preview",
+                "file": "任务清单/2026-05-24.md",
+                "mode": "source",
                 "source": false
               },
               "icon": "lucide-file",
-              "title": "在Arch Linux使用虚拟机"
+              "title": "2026-05-24"
             }
           }
         ]
@@ -170,14 +170,20 @@
   },
   "active": "77ef8b4b384eb5d8",
   "lastOpenFiles": [
-    "任务清单/2026-05-20.md",
-    "任务清单/2026-05-21.md",
+    "计算机网络/计算机网络自顶向下方法.pdf",
+    "任务清单/2026-05-24.md",
     "任务清单/长期计划.md",
+    "工具.md",
+    "任务清单/2026-05-21.md",
+    "任务清单/2026-05-22.md",
+    "Linux/Rsync.md",
+    "Linux/Yazi.md",
+    "Linux/在Arch Linux使用虚拟机.md",
+    "任务清单/2026-05-20.md",
     "CLAUDE.md",
     "Rust/cargo.md",
     "任务清单/长期计划",
     "Linux/yazi.md",
-    "Linux/在Arch Linux使用虚拟机.md",
     "2026-05-19.md"
   ]
 }
