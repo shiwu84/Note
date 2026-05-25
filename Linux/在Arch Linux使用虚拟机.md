@@ -2,17 +2,16 @@
 title: 在 Arch Linux 中使用虚拟机
 date: 2026-05-19
 tags:
-  - linux
-  - virtual-machine
-  - kvm
-  - qemu
-  - libvirt
-  - windows
+  - linux/virtual-machine
+  - linux/kvm
+  - linux/qemu
+  - linux/libvirt
+  - linux/windows
 ---
 
 # 在 Arch Linux 中使用虚拟机
 
-> [!note] 组件关系
+> [!note] 相关笔记
 > 本文综合使用 [[Linux/KVM|KVM]]（CPU/内存虚拟化）、[[Linux/QEMU|QEMU]]（设备模拟）、[[Linux/Libvirt|Libvirt]]（管理层）和 virt-manager（图形界面）搭建完整的虚拟化环境。各组件详解见对应笔记。
 
 关于 KVM，2010年后生产的x86架构CPU几乎都有这个功能，最常见的拦路虎其实是 **BIOS/UEFI 中关闭了虚拟化**，进入 BIOS 手动开启即可。

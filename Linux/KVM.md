@@ -2,9 +2,8 @@
 title: KVM
 date: 2026-05-19
 tags:
-  - linux
-  - kvm
-  - virtualization
+  - linux/kvm
+  - linux/virtualization
 ---
 
 # KVM

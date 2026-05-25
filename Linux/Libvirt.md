@@ -2,9 +2,8 @@
 title: Libvirt
 date: 2026-05-19
 tags:
-  - linux
-  - libvirt
-  - virtualization
+  - linux/libvirt
+  - linux/virtualization
 ---
 
 # Libvirt
@@ -12,7 +11,9 @@ tags:
 > [!note] 相关笔记
 > Libvirt 是虚拟化**管理中间层**，向下管理 [[Linux/KVM|KVM]] 和 [[Linux/QEMU|QEMU]]，向上提供统一 API。实操指南见 [[Linux/在Arch Linux使用虚拟机|在 Arch Linux 使用虚拟机]]。
 
-Libvirt 是一套软件集合，提供了管理虚拟机及其他虚拟化功能（如存储和网络接口管理）的便捷途径。这些软件包括一个长期稳定的 **C 语言 API**、一个守护进程（**libvirtd**）以及一个命令行工具（**virsh**）。Libvirt 的主要目标之一是提供一种统一的方式来管理多种不同的虚拟化提供程序/虚拟机管理程序，例如 KVM/QEMU、Xen、LXC、OpenVZ 或 VirtualBox 等。
+Libvirt 是一套软件集合，提供了管理虚拟机及其他虚拟化功能（如存储和网络接口管理）的便捷途径。
+
+这些软件包括一个长期稳定的 **C 语言 API**、一个守护进程（**libvirtd**）以及一个命令行工具（**virsh**）。Libvirt 的主要目标之一是提供一种统一的方式来管理多种不同的虚拟化提供程序/虚拟机管理程序，例如 KVM/QEMU、Xen、LXC、OpenVZ 或 VirtualBox 等。
 
 Libvirt 的一些主要功能包括：
 

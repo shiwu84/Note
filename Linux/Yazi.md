@@ -2,15 +2,14 @@
 title: Yazi
 date: 2026-05-19
 tags:
-  - linux
-  - yazi
-  - terminal
-  - file-manager
+  - linux/yazi
+  - linux/terminal
+  - linux/file-manager
 ---
 
 # Yazi
 
-> [!note] 相关
+> [!note] 相关笔记
 > Yazi 的 Markdown 预览功能依赖 [[Rust/cargo|Cargo]] 安装的 `mdv` 工具。
 
 在 Arch Linux 中安装 yazi：

@@ -1,15 +1,14 @@
 ---
 date: 2026-05-23
 tags:
-  - linux
-  - rsync
-  - tool
-  - sync
+  - linux/rsync
+  - linux/tool
+  - linux/sync
 ---
 
 # rsync 远程同步工具
 
-> [!note] 核心思想
+> [!note] 相关笔记
 > rsync 解决的本质问题是"如何高效地让两个地方的文件保持一致"。最笨的办法是每次全量复制，rsync 的聪明之处在于只传输差异部分——通过对比文件的校验和与时间戳，跳过已经相同的内容。
 
 ## 基本结构

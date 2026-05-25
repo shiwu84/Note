@@ -2,9 +2,8 @@
 title: QEMU
 date: 2026-05-19
 tags:
-  - linux
-  - qemu
-  - virtualization
+  - linux/qemu
+  - linux/virtualization
 ---
 
 # QEMU
