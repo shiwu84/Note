@@ -56,12 +56,7 @@ This file provides guidance to Claude Code (claude.ai/code) when working with co
 > Yazi.md   <──> 工具.md           (系统工具汇总)
 > Rsync.md  <──> 工具.md           (系统工具汇总)
 > 工具.md   <──> 任务清单/2026-05-22.md  (配置双系统任务)
-> 01_Hello World!.md <──> 02_现代模式，"use strict".md  (JS 学习路线)
-> 02_现代模式，"use strict".md <──> 03_变量.md  (JS 学习路线)
-> 01_Hello World!.md <──> 03_变量.md  (JS 学习路线)
-> 01_Hello World!.md <──> 任务清单/2026-05-24.md  (学习 JS)
-> 02_现代模式，"use strict".md <──> 任务清单/2026-05-24.md  (学习 JS)
-> 03_变量.md <──> 任务清单/2026-05-24.md  (学习 JS)
+> 04_数据类型.md <──> 任务清单/2026-05-24.md  (学习 JS 数据类型)
 > ```
 
 ### 文本格式规范（Markdown + Obsidian）
